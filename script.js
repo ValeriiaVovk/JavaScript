@@ -1,31 +1,43 @@
-let firstNumber = prompt('Введіть перше число');
-let secondNumber = prompt('Введіть друге число');
+function numberOperations() {
+  let firstNumber = prompt("Введіть перше число");
+  let secondNumber = prompt("Введіть друге число");
 
-let addition = Number(firstNumber) + Number(secondNumber);
-let subtraction = Number(firstNumber) - Number(secondNumber);
-let multiplication = Number(firstNumber) * Number(secondNumber);
-let division = Number(firstNumber) / Number(secondNumber);
+  if (firstNumber === "" || secondNumber === "") {
+    alert(`Помилка в обчисленнях`);
+    return;
+  }
 
-if (firstNumber === "" || secondNumber === "") {
-  alert(`Помилка в обчисленнях! Введіть числа!`);
-} else {
+  if (isNaN(firstNumber) || isNaN(secondNumber)) {
+    alert(`Помилка в обчисленнях`);
+    return;
+  }
+
+  let addition = Number(firstNumber) + Number(secondNumber);
   alert(`Сума чисел: ${addition}`);
 
-  if (firstNumber < secondNumber) {
+  let subtraction = Number(firstNumber) - Number(secondNumber);
+
+  if (secondNumber > firstNumber) {
     let confirmed = confirm(`Ви впевнені, що хочете продовжити операцію?`);
     if (confirmed) {
       alert(`Різниця чисел: ${subtraction}`);
     } else {
     }
   } else if (firstNumber >= secondNumber) {
-    alert(`Різниця чисел: ${subtraction}`);
+      alert(`Різниця чисел: ${subtraction}`);
   }
 
+  let multiplication = Number(firstNumber) * Number(secondNumber);
   alert(`Добуток чисел: ${multiplication}`);
 
   if (secondNumber == 0) {
     alert(`Ділити на нуль не можна!`);
-  } else {
-    alert(`Частка чисел: ${division}`);
+    return;
   }
+
+  let division = Number(firstNumber) / Number(secondNumber);
+  alert(`Частка чисел: ${division}`);
+
 }
+
+numberOperations();
